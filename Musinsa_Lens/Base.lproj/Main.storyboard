@@ -91,29 +91,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="검색방법 선택" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXr-dI-xSW">
-                                <rect key="frame" x="150" y="124" width="93" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xa3-VE-G9T">
-                                <rect key="frame" x="138" y="175" width="117" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xa3-VE-G9T">
+                                <rect key="frame" x="138" y="109" width="117" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="카메라로 검색"/>
                                 <connections>
                                     <segue destination="z4W-cB-cpc" kind="presentation" id="p7e-0o-XTX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vga-45-3q2">
-                                <rect key="frame" x="131" y="230" width="132" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="갤러리에서 선택"/>
-                                <connections>
-                                    <segue destination="iJf-uE-59C" kind="presentation" id="4S8-Fa-75X"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ANM-XU-1FB">
@@ -121,17 +104,32 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yS1-uG-1C3">
-                                <rect key="frame" x="171" y="492" width="54" height="35"/>
+                                <rect key="frame" x="154" y="492" width="88" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="확인"/>
+                                <buttonConfiguration key="configuration" style="filled" title="추천 받기"/>
                                 <connections>
                                     <segue destination="fpY-dj-O7O" kind="show" id="CM1-rU-Ihh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vga-45-3q2">
+                                <rect key="frame" x="130.66666666666666" y="169" width="131.99999999999997" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="갤러리에서 선택"/>
+                                <connections>
+                                    <segue destination="iJf-uE-59C" kind="presentation" id="4S8-Fa-75X"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="byB-o2-df8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Xa3-VE-G9T" firstAttribute="centerX" secondItem="fKi-z3-70h" secondAttribute="centerX" id="02U-Rg-Sof"/>
+                            <constraint firstItem="Xa3-VE-G9T" firstAttribute="top" secondItem="byB-o2-df8" secondAttribute="top" constant="50" id="0q7-VV-lnM"/>
+                            <constraint firstItem="Vga-45-3q2" firstAttribute="top" secondItem="Xa3-VE-G9T" secondAttribute="bottom" constant="25" id="5Q2-Kj-xD1"/>
+                            <constraint firstItem="Vga-45-3q2" firstAttribute="centerX" secondItem="fKi-z3-70h" secondAttribute="centerX" id="WzP-3k-il0"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="f3X-BV-acz"/>
                 </viewController>
