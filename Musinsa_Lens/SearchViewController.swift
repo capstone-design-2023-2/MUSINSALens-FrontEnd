@@ -11,6 +11,8 @@ import KakaoSDKUser
 class SearchViewController: UIViewController, UISearchBarDelegate {
     
     var searchBar: UISearchBar! // UISearchBar 인스턴스를 저장할 변수 선언
+    var confirmed: Bool = false // 가이드 화면 경험 확인 변수
+    private var guideConfirmedNotification = NSNotification.Name("GuideConfirmed")
     
     @IBOutlet weak var KeywordLocation: UILabel!
     
@@ -18,6 +20,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Notification 등록
+        NotificationCenter.default.addObserver(self, selector: #selector(handleGuideConfirmed), name: guideConfirmedNotification, object: nil)
+
 
         setupSearchBar()
         setupLensButton()
@@ -49,10 +54,27 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     }
     
     
+    // MARK: - 액션 함수
+
+    // 가이드 확인 이벤트를 처리하는 메서드
+    @objc func handleGuideConfirmed() {
+        confirmed = true
+        // 이후 로직 추가 가능
+    }
+    
     // LensButton 눌렸을 때 호출 -> 화면전환(MethodViewController)
     @objc func lensButtonTapped() {
+//        if guideConfirmed {
+//            // 조건이 만족되면 MethodVC로 이동
+//            let methodVC = MethodViewController()
+//            navigationController?.pushViewController(methodVC, animated: true)
+//        }
+//        else {
+//            guard let nextVC =  self.storyboard?.instantiateViewController(withIdentifier:"GuideVC")else{return}
+//            self.navigationController?.pushViewController(nextVC, animated: true)
+//        }
         guard let nextVC =  self.storyboard?.instantiateViewController(withIdentifier:"MethodVC")else{return}
-            self.navigationController?.pushViewController(nextVC, animated: true)
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     // KeywordButton 설정 함수
@@ -159,8 +181,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                 else {
                     print("unlink() success.")
 
-                    // 연결끊기 시 메인으로 보냄
-                    self.navigationController?.popViewController(animated: true)
+                    // 화면전환 -> LoginViewController
+                    guard let nextVC =  self.storyboard?.instantiateViewController(withIdentifier:"LoginVC")else{return}
+                        self.navigationController?.pushViewController(nextVC, animated: true)
                 }
             }
         }

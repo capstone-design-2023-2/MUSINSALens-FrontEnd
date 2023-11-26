@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Musinsa_Lens" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Musinsa_Lens" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -66,9 +66,8 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="전체삭제"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiP-hi-NX5">
-                                <rect key="frame" x="280" y="750" width="83" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiP-hi-NX5">
+                                <rect key="frame" x="280" y="757" width="83" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="로그아웃"/>
                                 <connections>
@@ -81,7 +80,9 @@
                         <constraints>
                             <constraint firstItem="1Ri-lc-fg9" firstAttribute="top" secondItem="6U6-D7-YVS" secondAttribute="top" constant="50" id="D7y-fH-s2D"/>
                             <constraint firstItem="BB8-7h-BeT" firstAttribute="centerY" secondItem="1Ri-lc-fg9" secondAttribute="centerY" id="HZ3-qr-Vtz"/>
+                            <constraint firstItem="6U6-D7-YVS" firstAttribute="bottom" secondItem="kiP-hi-NX5" secondAttribute="bottom" constant="60" id="dNV-Kh-stG"/>
                             <constraint firstItem="1Ri-lc-fg9" firstAttribute="leading" secondItem="6U6-D7-YVS" secondAttribute="leading" constant="30" id="fSB-EY-epe"/>
+                            <constraint firstItem="6U6-D7-YVS" firstAttribute="trailing" secondItem="kiP-hi-NX5" secondAttribute="trailing" constant="30" id="th8-Fl-N3k"/>
                             <constraint firstItem="6U6-D7-YVS" firstAttribute="trailing" secondItem="BB8-7h-BeT" secondAttribute="trailing" constant="30" id="ygk-cA-DlV"/>
                         </constraints>
                     </view>
@@ -103,9 +104,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xa3-VE-G9T">
-                                <rect key="frame" x="138" y="153" width="117" height="35"/>
+                                <rect key="frame" x="128.66666666666666" y="153" width="135.99999999999997" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="카메라로 검색"/>
+                                <buttonConfiguration key="configuration" style="tinted" image="Camera-icon" title=" 카메라로 검색"/>
                                 <connections>
                                     <segue destination="z4W-cB-cpc" kind="presentation" id="p7e-0o-XTX"/>
                                 </connections>
@@ -119,9 +120,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vga-45-3q2">
-                                <rect key="frame" x="130.66666666666666" y="213" width="131.99999999999997" height="35"/>
+                                <rect key="frame" x="121.33333333333333" y="213" width="150.66666666666669" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="갤러리에서 선택"/>
+                                <buttonConfiguration key="configuration" style="tinted" image="Galary" title=" 갤러리에서 선택"/>
                                 <connections>
                                     <segue destination="iJf-uE-59C" kind="presentation" id="4S8-Fa-75X"/>
                                 </connections>
@@ -153,21 +154,30 @@
             </objects>
             <point key="canvasLocation" x="2846.5648854961833" y="-35.211267605633807"/>
         </scene>
-        <!--View Controller-->
+        <!--Guide View Controller-->
         <scene sceneID="gqQ-FR-dQB">
             <objects>
-                <viewController id="e2r-NU-YPA" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GuideVC" id="e2r-NU-YPA" customClass="GuideViewController" customModule="Musinsa_Lens" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lg9-9X-LQk">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="이미지 검색 가이드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5U0-vE-9hb">
-                                <rect key="frame" x="133" y="173" width="127" height="21"/>
+                                <rect key="frame" x="133" y="91" width="126" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Huf-2b-YAj">
+                                <rect key="frame" x="170" y="180" width="54" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="확인"/>
+                                <connections>
+                                    <action selector="confirmButtonTappedWith_sender:" destination="e2r-NU-YPA" eventType="touchUpInside" id="Dye-wN-wOy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bA2-aZ-LWc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -329,7 +339,7 @@
                                 <buttonConfiguration key="configuration" style="gray" title="질감"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="정렬 순서" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcN-fh-6ZL">
-                                <rect key="frame" x="30" y="130" width="56" height="18"/>
+                                <rect key="frame" x="30" y="131" width="56" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -372,6 +382,8 @@
     </scenes>
     <color key="tintColor" systemColor="labelColor"/>
     <resources>
+        <image name="Camera-icon" width="15" height="15"/>
+        <image name="Galary" width="15" height="15"/>
         <image name="카카오톡로그인" width="260" height="40"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
