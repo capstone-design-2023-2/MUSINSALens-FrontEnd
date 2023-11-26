@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KakaoSDKUser
 
 class SearchViewController: UIViewController, UISearchBarDelegate {
     
@@ -144,5 +145,24 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         
         ])
     }
+    
+    // MARK: - Action Function Part
+    
+    // 로그아웃 버튼
+    @IBAction func unlinkClicked(_ sender: Any) {
+
+            // 연결 끊기 : 연결이 끊어지면 기존의 토큰은 더 이상 사용할 수 없으므로, 연결 끊기 API 요청 성공 시 로그아웃 처리가 함께 이뤄져 토큰이 삭제됩니다.
+            UserApi.shared.unlink {(error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("unlink() success.")
+
+                    // 연결끊기 시 메인으로 보냄
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
 }
 
