@@ -18,6 +18,7 @@
 		08CF63522B1246CD00A20DA2 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF63512B1246CD00A20DA2 /* RecommendViewController.swift */; };
 		08CF637B2B13519E00A20DA2 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF637A2B13519E00A20DA2 /* CollectionViewCell.swift */; };
 		08CF637E2B135BE500A20DA2 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 08CF637D2B135BE500A20DA2 /* KakaoSDK */; };
+		08CF63802B1372BA00A20DA2 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF637F2B1372BA00A20DA2 /* GuideViewController.swift */; };
 		08EBB3AF2B0FB2E70035B23B /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EBB3AE2B0FB2E70035B23B /* CustomColor.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		089425402B0A6B330031B21E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		08CF63512B1246CD00A20DA2 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		08CF637A2B13519E00A20DA2 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		08CF637F2B1372BA00A20DA2 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		08EBB3AE2B0FB2E70035B23B /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +73,7 @@
 				0894252A2B0A59A10031B21E /* AppDelegate.swift */,
 				0894252C2B0A59A10031B21E /* SceneDelegate.swift */,
 				08EBB3AE2B0FB2E70035B23B /* CustomColor.swift */,
+				08CF637F2B1372BA00A20DA2 /* GuideViewController.swift */,
 				0894252E2B0A59A10031B21E /* LoginViewController.swift */,
 				0894253E2B0A6AF80031B21E /* MethodViewController.swift */,
 				089425402B0A6B330031B21E /* SearchViewController.swift */,
@@ -163,6 +166,7 @@
 			files = (
 				089425412B0A6B330031B21E /* SearchViewController.swift in Sources */,
 				0894252F2B0A59A10031B21E /* LoginViewController.swift in Sources */,
+				08CF63802B1372BA00A20DA2 /* GuideViewController.swift in Sources */,
 				08CF637B2B13519E00A20DA2 /* CollectionViewCell.swift in Sources */,
 				08CF63522B1246CD00A20DA2 /* RecommendViewController.swift in Sources */,
 				08EBB3AF2B0FB2E70035B23B /* CustomColor.swift in Sources */,
