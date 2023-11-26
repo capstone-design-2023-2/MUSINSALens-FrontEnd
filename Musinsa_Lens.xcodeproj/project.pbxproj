@@ -15,6 +15,9 @@
 		089425372B0A59A20031B21E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089425352B0A59A20031B21E /* LaunchScreen.storyboard */; };
 		0894253F2B0A6AF80031B21E /* MethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0894253E2B0A6AF80031B21E /* MethodViewController.swift */; };
 		089425412B0A6B330031B21E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089425402B0A6B330031B21E /* SearchViewController.swift */; };
+		08CF63522B1246CD00A20DA2 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF63512B1246CD00A20DA2 /* RecommendViewController.swift */; };
+		08CF637B2B13519E00A20DA2 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF637A2B13519E00A20DA2 /* CollectionViewCell.swift */; };
+		08CF637E2B135BE500A20DA2 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 08CF637D2B135BE500A20DA2 /* KakaoSDK */; };
 		08EBB3AF2B0FB2E70035B23B /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EBB3AE2B0FB2E70035B23B /* CustomColor.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,8 @@
 		089425382B0A59A20031B21E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0894253E2B0A6AF80031B21E /* MethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodViewController.swift; sourceTree = "<group>"; };
 		089425402B0A6B330031B21E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		08CF63512B1246CD00A20DA2 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
+		08CF637A2B13519E00A20DA2 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		08EBB3AE2B0FB2E70035B23B /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -37,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08CF637E2B135BE500A20DA2 /* KakaoSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +74,8 @@
 				0894252E2B0A59A10031B21E /* LoginViewController.swift */,
 				0894253E2B0A6AF80031B21E /* MethodViewController.swift */,
 				089425402B0A6B330031B21E /* SearchViewController.swift */,
+				08CF63512B1246CD00A20DA2 /* RecommendViewController.swift */,
+				08CF637A2B13519E00A20DA2 /* CollectionViewCell.swift */,
 				089425302B0A59A10031B21E /* Main.storyboard */,
 				089425332B0A59A20031B21E /* Assets.xcassets */,
 				089425352B0A59A20031B21E /* LaunchScreen.storyboard */,
@@ -92,6 +100,9 @@
 			dependencies = (
 			);
 			name = Musinsa_Lens;
+			packageProductDependencies = (
+				08CF637D2B135BE500A20DA2 /* KakaoSDK */,
+			);
 			productName = Musinsa_Lens;
 			productReference = 089425272B0A59A10031B21E /* Musinsa_Lens.app */;
 			productType = "com.apple.product-type.application";
@@ -120,6 +131,9 @@
 				Base,
 			);
 			mainGroup = 0894251E2B0A59A10031B21E;
+			packageReferences = (
+				08CF637C2B135BE500A20DA2 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+			);
 			productRefGroup = 089425282B0A59A10031B21E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -149,6 +163,8 @@
 			files = (
 				089425412B0A6B330031B21E /* SearchViewController.swift in Sources */,
 				0894252F2B0A59A10031B21E /* LoginViewController.swift in Sources */,
+				08CF637B2B13519E00A20DA2 /* CollectionViewCell.swift in Sources */,
+				08CF63522B1246CD00A20DA2 /* RecommendViewController.swift in Sources */,
 				08EBB3AF2B0FB2E70035B23B /* CustomColor.swift in Sources */,
 				0894253F2B0A6AF80031B21E /* MethodViewController.swift in Sources */,
 				0894252B2B0A59A10031B21E /* AppDelegate.swift in Sources */,
@@ -370,6 +386,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		08CF637C2B135BE500A20DA2 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		08CF637D2B135BE500A20DA2 /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08CF637C2B135BE500A20DA2 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0894251F2B0A59A10031B21E /* Project object */;
 }
