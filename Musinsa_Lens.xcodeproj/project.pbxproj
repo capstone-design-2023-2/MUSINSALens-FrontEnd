@@ -19,6 +19,7 @@
 		08CF637B2B13519E00A20DA2 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF637A2B13519E00A20DA2 /* CollectionViewCell.swift */; };
 		08CF637E2B135BE500A20DA2 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 08CF637D2B135BE500A20DA2 /* KakaoSDK */; };
 		08CF63802B1372BA00A20DA2 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF637F2B1372BA00A20DA2 /* GuideViewController.swift */; };
+		08CF638B2B15E6AF00A20DA2 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF638A2B15E6AF00A20DA2 /* NetworkResult.swift */; };
 		08EBB3AF2B0FB2E70035B23B /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EBB3AE2B0FB2E70035B23B /* CustomColor.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		08CF63512B1246CD00A20DA2 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		08CF637A2B13519E00A20DA2 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		08CF637F2B1372BA00A20DA2 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
+		08CF638A2B15E6AF00A20DA2 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		08EBB3AE2B0FB2E70035B23B /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 		089425292B0A59A10031B21E /* Musinsa_Lens */ = {
 			isa = PBXGroup;
 			children = (
+				08CF638C2B15E6B700A20DA2 /* Configuration */,
 				0894252A2B0A59A10031B21E /* AppDelegate.swift */,
 				0894252C2B0A59A10031B21E /* SceneDelegate.swift */,
 				08EBB3AE2B0FB2E70035B23B /* CustomColor.swift */,
@@ -77,7 +80,7 @@
 				0894252E2B0A59A10031B21E /* LoginViewController.swift */,
 				0894253E2B0A6AF80031B21E /* MethodViewController.swift */,
 				089425402B0A6B330031B21E /* SearchViewController.swift */,
-				08CF63512B1246CD00A20DA2 /* RecommendViewController.swift */,
+				08CF638D2B15E7C300A20DA2 /* Recommend */,
 				08CF637A2B13519E00A20DA2 /* CollectionViewCell.swift */,
 				089425302B0A59A10031B21E /* Main.storyboard */,
 				089425332B0A59A20031B21E /* Assets.xcassets */,
@@ -85,6 +88,22 @@
 				089425382B0A59A20031B21E /* Info.plist */,
 			);
 			path = Musinsa_Lens;
+			sourceTree = "<group>";
+		};
+		08CF638C2B15E6B700A20DA2 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				08CF638A2B15E6AF00A20DA2 /* NetworkResult.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		08CF638D2B15E7C300A20DA2 /* Recommend */ = {
+			isa = PBXGroup;
+			children = (
+				08CF63512B1246CD00A20DA2 /* RecommendViewController.swift */,
+			);
+			path = Recommend;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				089425412B0A6B330031B21E /* SearchViewController.swift in Sources */,
+				08CF638B2B15E6AF00A20DA2 /* NetworkResult.swift in Sources */,
 				0894252F2B0A59A10031B21E /* LoginViewController.swift in Sources */,
 				08CF63802B1372BA00A20DA2 /* GuideViewController.swift in Sources */,
 				08CF637B2B13519E00A20DA2 /* CollectionViewCell.swift in Sources */,
@@ -248,7 +268,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -302,7 +322,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -18,21 +18,21 @@ class LoginViewController: UIViewController {
     // 카카오톡으로 로그인
     @IBAction func loginWithKakaoTalk(){
         // 카카오톡 실행 가능 여부 확인
-        if (UserApi.isKakaoTalkLoginAvailable()) {
-            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                if let error = error {
-                    print(error)
-                }
-                else {
-                    print("loginWithKakaoTalk() success.")
-                    
-                    //do something
-                    _ = oauthToken
-                }
-            }
-        }
+//        if (UserApi.isKakaoTalkLoginAvailable()) {
+//            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+//                if let error = error {
+//                    print(error)
+//                }
+//                else {
+//                    print("loginWithKakaoTalk() success.")
+//
+//                    //do something
+//                    _ = oauthToken
+//                }
+//            }
+//        }
         // 카카오 계정으로 로그인
-        else{UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+         UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
             if let error = error {
                 print(error)
             }
@@ -45,4 +45,3 @@ class LoginViewController: UIViewController {
         }
         }
     }
-}

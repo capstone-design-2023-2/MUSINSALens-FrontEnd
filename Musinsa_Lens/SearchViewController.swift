@@ -54,7 +54,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     }
     
     
-    // MARK: - 액션 함수
+    // MARK: - Action Function
 
     // 가이드 확인 이벤트를 처리하는 메서드
     @objc func handleGuideConfirmed() {
@@ -73,7 +73,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
 //            guard let nextVC =  self.storyboard?.instantiateViewController(withIdentifier:"GuideVC")else{return}
 //            self.navigationController?.pushViewController(nextVC, animated: true)
 //        }
-        guard let nextVC =  self.storyboard?.instantiateViewController(withIdentifier:"MethodVC")else{return}
+        guard let nextVC =  self.storyboard?.instantiateViewController(withIdentifier:"GuideVC")else{return}
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
