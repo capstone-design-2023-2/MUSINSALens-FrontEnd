@@ -21,6 +21,11 @@
 		08CF63802B1372BA00A20DA2 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF637F2B1372BA00A20DA2 /* GuideViewController.swift */; };
 		08CF638B2B15E6AF00A20DA2 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF638A2B15E6AF00A20DA2 /* NetworkResult.swift */; };
 		08EBB3AF2B0FB2E70035B23B /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EBB3AE2B0FB2E70035B23B /* CustomColor.swift */; };
+		26D8726D2B14899F008F0E47 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 26D8726C2B14899F008F0E47 /* KakaoSDK */; };
+		26D8726F2B14899F008F0E47 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 26D8726E2B14899F008F0E47 /* KakaoSDKAuth */; };
+		26D872712B14899F008F0E47 /* KakaoSDKCert in Frameworks */ = {isa = PBXBuildFile; productRef = 26D872702B14899F008F0E47 /* KakaoSDKCert */; };
+		26D872732B14899F008F0E47 /* KakaoSDKCertCore in Frameworks */ = {isa = PBXBuildFile; productRef = 26D872722B14899F008F0E47 /* KakaoSDKCertCore */; };
+		26D872752B14899F008F0E47 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 26D872742B14899F008F0E47 /* KakaoSDKCommon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +52,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				08CF637E2B135BE500A20DA2 /* KakaoSDK in Frameworks */,
+				26D8726D2B14899F008F0E47 /* KakaoSDK in Frameworks */,
+				26D872732B14899F008F0E47 /* KakaoSDKCertCore in Frameworks */,
+				26D8726F2B14899F008F0E47 /* KakaoSDKAuth in Frameworks */,
+				26D872752B14899F008F0E47 /* KakaoSDKCommon in Frameworks */,
+				26D872712B14899F008F0E47 /* KakaoSDKCert in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +134,11 @@
 			name = Musinsa_Lens;
 			packageProductDependencies = (
 				08CF637D2B135BE500A20DA2 /* KakaoSDK */,
+				26D8726C2B14899F008F0E47 /* KakaoSDK */,
+				26D8726E2B14899F008F0E47 /* KakaoSDKAuth */,
+				26D872702B14899F008F0E47 /* KakaoSDKCert */,
+				26D872722B14899F008F0E47 /* KakaoSDKCertCore */,
+				26D872742B14899F008F0E47 /* KakaoSDKCommon */,
 			);
 			productName = Musinsa_Lens;
 			productReference = 089425272B0A59A10031B21E /* Musinsa_Lens.app */;
@@ -268,7 +283,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -322,7 +337,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -339,7 +354,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HQKU8KNVP8;
+				DEVELOPMENT_TEAM = X9JLS2FQT9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Musinsa_Lens/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -367,7 +382,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HQKU8KNVP8;
+				DEVELOPMENT_TEAM = X9JLS2FQT9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Musinsa_Lens/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -427,6 +442,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 08CF637C2B135BE500A20DA2 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDK;
+		};
+		26D8726C2B14899F008F0E47 /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08CF637C2B135BE500A20DA2 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
+		};
+		26D8726E2B14899F008F0E47 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08CF637C2B135BE500A20DA2 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		26D872702B14899F008F0E47 /* KakaoSDKCert */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08CF637C2B135BE500A20DA2 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCert;
+		};
+		26D872722B14899F008F0E47 /* KakaoSDKCertCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08CF637C2B135BE500A20DA2 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCertCore;
+		};
+		26D872742B14899F008F0E47 /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08CF637C2B135BE500A20DA2 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
