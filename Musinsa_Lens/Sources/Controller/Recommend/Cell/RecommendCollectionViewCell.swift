@@ -29,19 +29,13 @@ class RecommendCollectionViewCell: UICollectionViewCell {
         self.priceLabel.textAlignment = .left
     }
     
-    // MARK: - Set Data
-    func setData(image: String,
-                 brandName: String,
-                 itemName: String,
-                 price: String) {
-        
-//        if let imageURL = URL(string: image) {
-//            self.itemImageView.kf.setImage(with: imageURL)
-//        }
-        
-        self.brandLabel.text = brandName
-        self.itemLabel.text = itemName
-        self.priceLabel.text = price
-    }
-
+//    // MARK: - Set Data
+//    func setData(image: String,
+//                 brandName: String,
+//                 itemName: String,
+//                 price: String) {
+//        self.brandLabel.text = brandName
+//        self.itemLabel.text = itemName
+//        self.priceLabel.text = price
+//    }
 }

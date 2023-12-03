@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08554EE12B1CE1140018C71C /* RecommendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08554EE02B1CE1140018C71C /* RecommendCollectionViewCell.xib */; };
 		0894252B2B0A59A10031B21E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0894252A2B0A59A10031B21E /* AppDelegate.swift */; };
 		0894252D2B0A59A10031B21E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0894252C2B0A59A10031B21E /* SceneDelegate.swift */; };
 		0894252F2B0A59A10031B21E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0894252E2B0A59A10031B21E /* LoginViewController.swift */; };
@@ -17,7 +18,6 @@
 		089425412B0A6B330031B21E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089425402B0A6B330031B21E /* SearchViewController.swift */; };
 		08B44A4F2B1A1D53003BC130 /* RecommendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B44A4E2B1A1D53003BC130 /* RecommendData.swift */; };
 		08B44A572B1AD941003BC130 /* RecommendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B44A562B1AD941003BC130 /* RecommendDataService.swift */; };
-		08B44A5D2B1ADCA2003BC130 /* RecommendCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B44A5C2B1ADCA2003BC130 /* RecommendCVC.xib */; };
 		08B44AB92B1C1D75003BC130 /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B44AB82B1C1D75003BC130 /* LoginData.swift */; };
 		08B44ABB2B1C1DC4003BC130 /* LoginDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B44ABA2B1C1DC4003BC130 /* LoginDataService.swift */; };
 		08B44ABF2B1C39A0003BC130 /* SortData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B44ABE2B1C39A0003BC130 /* SortData.swift */; };
@@ -34,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08554EE02B1CE1140018C71C /* RecommendCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendCollectionViewCell.xib; sourceTree = "<group>"; };
 		089425272B0A59A10031B21E /* Musinsa_Lens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Musinsa_Lens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0894252A2B0A59A10031B21E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0894252C2B0A59A10031B21E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +47,6 @@
 		089425402B0A6B330031B21E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		08B44A4E2B1A1D53003BC130 /* RecommendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendData.swift; sourceTree = "<group>"; };
 		08B44A562B1AD941003BC130 /* RecommendDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDataService.swift; sourceTree = "<group>"; };
-		08B44A5C2B1ADCA2003BC130 /* RecommendCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendCVC.xib; sourceTree = "<group>"; };
 		08B44AB82B1C1D75003BC130 /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		08B44ABA2B1C1DC4003BC130 /* LoginDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataService.swift; sourceTree = "<group>"; };
 		08B44ABE2B1C39A0003BC130 /* SortData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortData.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				08CF637A2B13519E00A20DA2 /* RecommendCollectionViewCell.swift */,
-				08B44A5C2B1ADCA2003BC130 /* RecommendCVC.xib */,
+				08554EE02B1CE1140018C71C /* RecommendCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -257,9 +257,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				089425372B0A59A20031B21E /* LaunchScreen.storyboard in Resources */,
+				08554EE12B1CE1140018C71C /* RecommendCollectionViewCell.xib in Resources */,
 				089425342B0A59A20031B21E /* Assets.xcassets in Resources */,
 				089425322B0A59A10031B21E /* Main.storyboard in Resources */,
-				08B44A5D2B1ADCA2003BC130 /* RecommendCVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

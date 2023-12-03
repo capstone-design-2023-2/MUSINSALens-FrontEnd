@@ -17,22 +17,13 @@ struct RecommendDataModel: Codable {
 
 // MARK: - Recommend Data
 struct RecommendData: Codable {
-    let id: Int
-    let name: String
-    let type: String
-    let available: Bool
-//    let titleIdx: Int
-//    let title: String
-//    let image: String
-//    let review, customer: Int
-//    let place: String
-//    let bookmark: Bool
-//    let v: Int
+    let brand: String
+    let itemName: String
+    let price: String
+    let itemImage: Bool
+
 
     enum CodingKeys: String, CodingKey {
-        case id, name, type, available
-//        case titleIdx = "title_idx"
-//        case title, image, review, customer, place, bookmark
-//        case v = "__v"
+        case brand,itemName,price,itemImage
     }
 }
