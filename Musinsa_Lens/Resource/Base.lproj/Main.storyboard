@@ -272,6 +272,9 @@
                                         <buttonConfiguration key="configuration" style="gray" title="기본">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="basicButtonTapped:" destination="fpY-dj-O7O" eventType="touchUpInside" id="6Bs-Eh-OvY"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qs7-fR-K8f">
                                         <rect key="frame" x="65" y="0.0" width="55" height="30"/>
@@ -279,6 +282,9 @@
                                         <buttonConfiguration key="configuration" style="gray" title="색상">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="colorButtonTapped:" destination="fpY-dj-O7O" eventType="touchUpInside" id="vn7-3D-xym"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hBJ-Nj-Dcw">
                                         <rect key="frame" x="130" y="0.0" width="55" height="30"/>
@@ -286,6 +292,9 @@
                                         <buttonConfiguration key="configuration" style="gray" title="핏">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="fitButtonTapped:" destination="fpY-dj-O7O" eventType="touchUpInside" id="NL0-j2-anh"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkO-sp-aLU">
                                         <rect key="frame" x="195" y="0.0" width="55" height="30"/>
@@ -296,6 +305,9 @@
                                         <buttonConfiguration key="configuration" style="gray" title="질감">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="textureButtonTapped:" destination="fpY-dj-O7O" eventType="touchUpInside" id="cRi-Lp-Ubn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

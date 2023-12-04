@@ -16,7 +16,10 @@ class RecommendViewController: UIViewController {
     
     
     // MARK: - Property
+    var recommendData: [RecommendData] = []
     
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var RecommendCollectionView: UICollectionView!
     
     @IBOutlet var basicButton: UIButton!
@@ -24,9 +27,6 @@ class RecommendViewController: UIViewController {
     @IBOutlet var fitButton: UIButton!
     @IBOutlet var textureButton: UIButton!
     
-    //오류방지용
-    @IBOutlet var brandLabel: UILabel!
-
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -37,72 +37,134 @@ class RecommendViewController: UIViewController {
         RecommendCollectionView.dataSource = self
         RecommendCollectionView.delegate = self
         
-        // 닙파일을 가져온다
+        // xib파일을 가져온다
         let myCustomCollectionViewCellNib = UINib(nibName: String(describing: RecommendCollectionViewCell.self), bundle: nil)
 
         
-        // 가져온 닙파일로 콜렉션뷰에 쎌로 등록한다
+        // 가져온 닙파일로 콜렉션뷰에 셀로 등록한다
         self.RecommendCollectionView.register(myCustomCollectionViewCellNib, forCellWithReuseIdentifier: String(describing: RecommendCollectionViewCell.self))
 
-
+        fetchData()
     }
-    // MARK: - 데이터 가져오기
-    func setRecommendServiceList() {
     
-        RecommendDataService.shared.getRecommendData { (response) in
-            switch(response) {
-                
-            case .success(let recommendDataList):
-                
-                
-                if let RecommendedDataList = recommendDataList as? [RecommendData] {
-                    for recommendData in RecommendedDataList {
-                        
-                        // 원하는 대로 UI 업데이트 또는 기타 처리 수행
-                        print(recommendData.brand, recommendData.itemName, recommendData.price, recommendData.itemImage)
-                        
-                    }
-                } else {
-                    print("Recommend 데이터가 수신되지 않았습니다.")
+    override func viewWillAppear(_ animated: Bool) {
+        // view가 다시 나타날때 collectionView 데이터 리로드
+        RecommendCollectionView.reloadData()
+        
+        // 데이터 디버깅
+        print(recommendData)
+    }
+    
+    // MARK: - 데이터 가져오기
+    
+    func fetchData() {
+        RecommendDataService.shared.getRecommendData_default { response in
+            switch response {
+            case .success(let data):
+                if let response = data as? RecommendDataModel, let data = response.data {
+                    self.recommendData = data
+                    // 반드시 컬렉션뷰 리로드
+                    self.RecommendCollectionView.reloadData()
                 }
-                
             case .requestErr(let message):
-                // 요청 에러 처리
-                print("요청 에러", message)
-            case .pathErr:
-                // 경로 에러 처리
-                print("경로 에러")
-            case .serverErr:
-                // 서버 에러 처리
-                print("서버 에러")
+                print(message)
             case .networkFail:
-                // 네트워크 연결 실패 처리
-                print("네트워크 연결 실패")
+                print("networkFail")
+            case .serverErr:
+                print("serverErr")
+            case .pathErr:
+                print("pathErr")
             }
         }
     }
-
+}
+// MARK: - Action
+extension RecommendViewController {
     
-    // MARK: - Action
-    @IBAction func SortButtonTapped(_ sender: UIButton) {
+    @IBAction func basicButtonTapped(_ sender: UIButton) {
         //case문 써가지고 4가지 상황으로 나누기
-        RecommendDataService.shared.getRecommendData{ (response) in
-            
-            //NetworkResult형 enum값을 이용해서 분기처리
-            switch(response) {
-            case .success(let recommendData):
-                if let data = recommendData as? RecommendData {
-                    self.brandLabel.text = data.brand
-                    
+        RecommendDataService.shared.getRecommendData_default { response in
+            switch response {
+            case .success(let data):
+                if let response = data as? RecommendDataModel, let data = response.data {
+                    self.recommendData = data
+                    // 반드시 컬렉션뷰 리로드
+                    self.RecommendCollectionView.reloadData()
                 }
-            case .requestErr(let message) :
-                print("requestErr", message)
-            case .pathErr :
-                print("pathErr?")
-            case .serverErr :
-                print("severErr?")
-            case .networkFail :
+            case .requestErr(let message):
+                print(message)
+            case .networkFail:
                 print("networkFail")
+            case .serverErr:
+                print("serverErr")
+            case .pathErr:
+                print("pathErr")
+            }
+        }
+    }
+    
+    @IBAction func colorButtonTapped(_ sender: UIButton) {
+        //case문 써가지고 4가지 상황으로 나누기
+        RecommendDataService.shared.getRecommendData_color { response in
+            switch response {
+            case .success(let data):
+                if let response = data as? RecommendDataModel, let data = response.data {
+                    self.recommendData = data
+                    // 반드시 컬렉션뷰 리로드
+                    self.RecommendCollectionView.reloadData()
+                }
+            case .requestErr(let message):
+                print(message)
+            case .networkFail:
+                print("networkFail")
+            case .serverErr:
+                print("serverErr")
+            case .pathErr:
+                print("pathErr")
+            }
+        }
+    }
+    
+    @IBAction func fitButtonTapped(_ sender: UIButton) {
+        //case문 써가지고 4가지 상황으로 나누기
+        RecommendDataService.shared.getRecommendData_fit { response in
+            switch response {
+            case .success(let data):
+                if let response = data as? RecommendDataModel, let data = response.data {
+                    self.recommendData = data
+                    // 반드시 컬렉션뷰 리로드
+                    self.RecommendCollectionView.reloadData()
+                }
+            case .requestErr(let message):
+                print(message)
+            case .networkFail:
+                print("networkFail")
+            case .serverErr:
+                print("serverErr")
+            case .pathErr:
+                print("pathErr")
+            }
+        }
+    }
+    
+    @IBAction func textureButtonTapped(_ sender: UIButton) {
+        //case문 써가지고 4가지 상황으로 나누기
+        RecommendDataService.shared.getRecommendData_texture { response in
+            switch response {
+            case .success(let data):
+                if let response = data as? RecommendDataModel, let data = response.data {
+                    self.recommendData = data
+                    // 반드시 컬렉션뷰 리로드
+                    self.RecommendCollectionView.reloadData()
+                }
+            case .requestErr(let message):
+                print(message)
+            case .networkFail:
+                print("networkFail")
+            case .serverErr:
+                print("serverErr")
+            case .pathErr:
+                print("pathErr")
             }
         }
     }
@@ -112,24 +174,30 @@ class RecommendViewController: UIViewController {
 
 extension RecommendViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.systemImageNameArray.count
+        return self.recommendData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: RecommendCollectionViewCell.self), for: indexPath) as! RecommendCollectionViewCell
         
+        
+        // 이미지 크기
+        let cell_width = (UIScreen.main.bounds.width-15)/2
+        cell.itemImageView.frame = CGRect(x: 0, y: 0, width: cell_width , height: cell_width)
+        
+        let recommendData = self.recommendData[indexPath.row]
+        
+        cell.setData(brandName: recommendData.brandName,
+                     itemName: recommendData.itemName,
+                     price: recommendData.price,
+                     itemImage: recommendData.itemImage)
+        
         /// 이미지뷰 설정
-        cell.itemImageView.image = UIImage(systemName: self.systemImageNameArray[indexPath.item])
-            
-            // 이미지 크기
-            let cell_width = (UIScreen.main.bounds.width-15)/2
-            cell.itemImageView.frame = CGRect(x: 0, y: 0, width: cell_width , height: cell_width)
-        
+        //cell.itemImageView.image = UIImage(systemName: self.systemImageNameArray[indexPath.item])
         /// 텍스트뷰 설정
-        cell.brandLabel.text = self.systemImageNameArray[indexPath.item]
-        
-        cell.contentView.backgroundColor = UIColor.blue
+        //cell.brandLabel.text = self.systemImageNameArray[indexPath.item]
+        //cell.contentView.backgroundColor = UIColor.blue
         
         return cell
     }
@@ -146,7 +214,7 @@ extension RecommendViewController: UICollectionViewDelegateFlowLayout {
     // 셀 크기 조정하기!! (스크린 사이즈를 잡아주고 들어가야, 모든 기기에서 동일한 비율을 얻을 수 있음)
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screenSize = UIScreen.main.bounds.width
-        let cellWidth = (screenSize - 15) / 2 // 10하면 완전 합쳐짐
+        let cellWidth = (screenSize - 10) / 2 // 10하면 완전 합쳐짐
         let cellHeight = cellWidth * 1.5
 
         return CGSize(width: cellWidth, height: cellHeight)

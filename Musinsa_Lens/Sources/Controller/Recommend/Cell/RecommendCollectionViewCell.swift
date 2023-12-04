@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 /// 홈 - 추천 아이템 정보 셀
 class RecommendCollectionViewCell: UICollectionViewCell {
@@ -29,13 +30,16 @@ class RecommendCollectionViewCell: UICollectionViewCell {
         self.priceLabel.textAlignment = .left
     }
     
-//    // MARK: - Set Data
-//    func setData(image: String,
-//                 brandName: String,
-//                 itemName: String,
-//                 price: String) {
-//        self.brandLabel.text = brandName
-//        self.itemLabel.text = itemName
-//        self.priceLabel.text = price
-//    }
+    // MARK: - Set Data
+    func setData(brandName: String,
+                 itemName: String,
+                 price: String,
+                 itemImage: String) {
+        self.brandLabel.text = brandName
+        self.itemLabel.text = itemName
+        self.priceLabel.text = price
+        if let imageURL = URL(string: itemImage) {
+            self.itemImageView.kf.setImage(with: imageURL)
+        }
+    }
 }

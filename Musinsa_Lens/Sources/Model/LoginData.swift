@@ -36,4 +36,3 @@ struct LoginData: Codable {
 //        case v = "__v"
     }
 }
-
