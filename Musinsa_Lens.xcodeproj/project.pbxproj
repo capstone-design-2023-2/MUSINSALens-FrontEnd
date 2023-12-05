@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		08554EE12B1CE1140018C71C /* RecommendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08554EE02B1CE1140018C71C /* RecommendCollectionViewCell.xib */; };
 		08554EE42B1DDC770018C71C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 08554EE32B1DDC770018C71C /* Kingfisher */; };
+		08554F292B1F7FA30018C71C /* Mantis in Frameworks */ = {isa = PBXBuildFile; productRef = 08554F282B1F7FA30018C71C /* Mantis */; };
 		0894252B2B0A59A10031B21E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0894252A2B0A59A10031B21E /* AppDelegate.swift */; };
 		0894252D2B0A59A10031B21E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0894252C2B0A59A10031B21E /* SceneDelegate.swift */; };
 		0894252F2B0A59A10031B21E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0894252E2B0A59A10031B21E /* LoginViewController.swift */; };
@@ -62,6 +63,7 @@
 			files = (
 				08CF637E2B135BE500A20DA2 /* KakaoSDK in Frameworks */,
 				26D8726D2B14899F008F0E47 /* KakaoSDK in Frameworks */,
+				08554F292B1F7FA30018C71C /* Mantis in Frameworks */,
 				08554EE42B1DDC770018C71C /* Kingfisher in Frameworks */,
 				26D872732B14899F008F0E47 /* KakaoSDKCertCore in Frameworks */,
 				26D8726F2B14899F008F0E47 /* KakaoSDKAuth in Frameworks */,
@@ -210,6 +212,7 @@
 				26D872722B14899F008F0E47 /* KakaoSDKCertCore */,
 				26D872742B14899F008F0E47 /* KakaoSDKCommon */,
 				08554EE32B1DDC770018C71C /* Kingfisher */,
+				08554F282B1F7FA30018C71C /* Mantis */,
 			);
 			productName = Musinsa_Lens;
 			productReference = 089425272B0A59A10031B21E /* Musinsa_Lens.app */;
@@ -242,6 +245,7 @@
 			packageReferences = (
 				08CF637C2B135BE500A20DA2 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				08554EE22B1DDC770018C71C /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				08554F272B1F7FA30018C71C /* XCRemoteSwiftPackageReference "Mantis" */,
 			);
 			productRefGroup = 089425282B0A59A10031B21E /* Products */;
 			projectDirPath = "";
@@ -511,6 +515,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		08554F272B1F7FA30018C71C /* XCRemoteSwiftPackageReference "Mantis" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/guoyingtao/Mantis";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		08CF637C2B135BE500A20DA2 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
@@ -526,6 +538,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 08554EE22B1DDC770018C71C /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		08554F282B1F7FA30018C71C /* Mantis */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08554F272B1F7FA30018C71C /* XCRemoteSwiftPackageReference "Mantis" */;
+			productName = Mantis;
 		};
 		08CF637D2B135BE500A20DA2 /* KakaoSDK */ = {
 			isa = XCSwiftPackageProductDependency;

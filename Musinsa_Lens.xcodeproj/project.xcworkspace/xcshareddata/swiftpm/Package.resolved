@@ -26,6 +26,15 @@
         "revision" : "277f1ab2c6664b19b4a412e32b094b201e2d5757",
         "version" : "7.10.0"
       }
+    },
+    {
+      "identity" : "mantis",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/guoyingtao/Mantis",
+      "state" : {
+        "revision" : "d6880eb97267248f89e6cef2dd52785d50627639",
+        "version" : "1.9.0"
+      }
     }
   ],
   "version" : 2

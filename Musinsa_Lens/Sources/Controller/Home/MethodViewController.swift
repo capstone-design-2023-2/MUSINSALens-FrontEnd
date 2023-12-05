@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import Mantis
 
 class MethodViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -21,7 +22,6 @@ class MethodViewController: UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//<<<<<<< HEAD:Musinsa_Lens/MethodViewController.swift
         setupNavigationBar()
 
         imagePicker.delegate = self
@@ -39,9 +39,6 @@ class MethodViewController: UIViewController, UIImagePickerControllerDelegate, U
         } catch {
             print(error)
         }
-//=======
-//        //setupNavigationBar()
-//>>>>>>> yerin:Musinsa_Lens/Sources/Controller/Home/MethodViewController.swift
     }
     
     // MARK: - Action
@@ -90,15 +87,15 @@ class MethodViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            imageView.image = editedImage
-        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imageView.image = originalImage
+         if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            //imageView.image = originalImage
+            dismiss(animated: true) {
+                             self.openCropVC(image: originalImage)
+            }
         }
-        
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
@@ -107,8 +104,27 @@ class MethodViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         // 네비게이션 바 타이틀 설정
         navigationItem.title = "무신사 렌즈"
-        
-        
     }
+}
 
+
+extension MethodViewController: CropViewControllerDelegate {
+    
+    func cropViewControllerDidCrop(_ cropViewController: Mantis.CropViewController, cropped: UIImage, transformation: Mantis.Transformation, cropInfo: Mantis.CropInfo) {
+        
+        imageView.image = cropped
+        cropViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func cropViewControllerDidCancel(_ cropViewController: Mantis.CropViewController, original: UIImage) {
+        cropViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    private func openCropVC(image: UIImage) {
+            
+            let cropViewController = Mantis.cropViewController(image: image)
+            cropViewController.delegate = self
+            cropViewController.modalPresentationStyle = .fullScreen
+            self.present(cropViewController, animated: true)
+        }
 }
