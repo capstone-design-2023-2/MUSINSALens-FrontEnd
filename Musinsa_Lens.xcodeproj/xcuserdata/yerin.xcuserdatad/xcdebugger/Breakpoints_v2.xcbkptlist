@@ -36,5 +36,53 @@
             landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4985BE61-23C4-49A3-A3BB-7C0CC776FD98"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Musinsa_Lens/Sources/Model/RecommendData.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "4"
+            endingLineNumber = "4"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "4985BE61-23C4-49A3-A3BB-7C0CC776FD98 - d30206d007b469c2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Musinsa_Lens.RecommendData.CodingKeys.init(rawValue: Swift.String) -&gt; Swift.Optional&lt;Musinsa_Lens.RecommendData.CodingKeys&gt;"
+                  moduleName = "Musinsa_Lens"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yerin/Documents/pyerin/MUSINSALens-FrontEnd/Musinsa_Lens/Sources/Model/RecommendData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "124">
+               </Location>
+               <Location
+                  uuid = "4985BE61-23C4-49A3-A3BB-7C0CC776FD98 - d013ece7134f40a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Musinsa_Lens.RecommendData.CodingKeys.rawValue.getter : Swift.String"
+                  moduleName = "Musinsa_Lens"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yerin/Documents/pyerin/MUSINSALens-FrontEnd/Musinsa_Lens/Sources/Model/RecommendData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -74,9 +74,13 @@ class RecommendViewController: UIViewController {
                 print("serverErr")
             case .pathErr:
                 print("pathErr")
+            case .decodingFail:
+                print("decodingErr")
             }
         }
     }
+    
+
 }
 // MARK: - Action
 extension RecommendViewController {
@@ -99,6 +103,8 @@ extension RecommendViewController {
                 print("serverErr")
             case .pathErr:
                 print("pathErr")
+            case .decodingFail:
+                print("decodingErr")
             }
         }
     }
@@ -108,10 +114,11 @@ extension RecommendViewController {
         RecommendDataService.shared.getRecommendData_color { response in
             switch response {
             case .success(let data):
+                // 받은 데이터를 RecommendDataModel로 캐스트할 수 있는지 확인
                 if let response = data as? RecommendDataModel, let data = response.data {
-                    self.recommendData = data
-                    // 반드시 컬렉션뷰 리로드
-                    self.RecommendCollectionView.reloadData()
+                    self.recommendData = data   // 그 중 'data' 속성을 추출합니다
+
+                    self.RecommendCollectionView.reloadData() //컬렉션뷰 리로드
                 }
             case .requestErr(let message):
                 print(message)
@@ -121,6 +128,8 @@ extension RecommendViewController {
                 print("serverErr")
             case .pathErr:
                 print("pathErr")
+            case .decodingFail:
+                print("decodingErr")
             }
         }
     }
@@ -143,9 +152,12 @@ extension RecommendViewController {
                 print("serverErr")
             case .pathErr:
                 print("pathErr")
+            case .decodingFail:
+                print("decodingErr")
             }
         }
     }
+
     
     @IBAction func textureButtonTapped(_ sender: UIButton) {
         //case문 써가지고 4가지 상황으로 나누기
@@ -165,6 +177,8 @@ extension RecommendViewController {
                 print("serverErr")
             case .pathErr:
                 print("pathErr")
+            case .decodingFail:
+                print("decodingErr")
             }
         }
     }

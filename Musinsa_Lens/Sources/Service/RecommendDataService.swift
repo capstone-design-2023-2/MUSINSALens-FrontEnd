@@ -16,7 +16,7 @@ struct RecommendDataService {
     // Singleton 패턴: 하나의 인스턴스를 앱 전체에서 공유할 수 있도록 함
     static let shared = RecommendDataService()
     
-
+    
     func getRecommendData_default(completion: @escaping (NetworkResult<Any>) -> ()) {
         // 서버 URL
         let url = "http://3.38.212.123:8000/rest/upload"
@@ -58,11 +58,45 @@ struct RecommendDataService {
     }
     
     
+    //    func getRecommendData_color(completion: @escaping (NetworkResult<Any>) -> ()) {
+    //
+    //        let url = "http://3.38.212.123:8000/rest/upload"
+    //        let sort_criterion = "color"
+    //        let image = UIImage(named: "/Users/yerin/Documents/pyerin/iOS_RF/item_sample.png")!
+    //        let header: HTTPHeaders = ["Content-Type" : "multipart/form-data"]
+    //
+    //
+    //        AF.upload(multipartFormData: { multipartData in
+    //            multipartData.append(sort_criterion.data(using: .utf8)!, withName: "sort_criterion")
+    //
+    //            if let imageData = image.jpegData(compressionQuality: 1.0) {
+    //                multipartData.append(imageData, withName: "file", fileName: "image.jpg", mimeType: "image/jpeg")
+    //            }
+    //        }, to: url, method: .post, headers: header)
+    //
+    //        .responseDecodable(of: RecommendDataModel.self)  { response in
+    //            switch response.result {
+    //
+    //            case .success(let value):
+    //                print("JSON Response: \(value)")
+    //
+    //
+    //
+    //            case .failure(let error):
+    //                print("Error: \(error)")
+    //            }
+    //        }
+    //    }
+    
+    
+    // 테스트용
     func getRecommendData_color(completion: @escaping (NetworkResult<Any>) -> ()) {
         
         let url = "http://3.38.212.123:8000/rest/upload"
         let sort_criterion = "color"
         let image = UIImage(named: "/Users/yerin/Documents/pyerin/iOS_RF/item_sample.png")!
+        let header: HTTPHeaders = ["Content-Type" : "multipart/form-data"]
+        
         
         AF.upload(multipartFormData: { multipartData in
             multipartData.append(sort_criterion.data(using: .utf8)!, withName: "sort_criterion")
@@ -70,26 +104,36 @@ struct RecommendDataService {
             if let imageData = image.jpegData(compressionQuality: 1.0) {
                 multipartData.append(imageData, withName: "file", fileName: "image.jpg", mimeType: "image/jpeg")
             }
-        }, to: url, method: .post, headers: ["Content-Type": "multipart/form-data"])
-        .responseJSON { response in
-            switch response.result {
-            case .success(let value):
+        }, to: url, method: .post, headers: header)
+        
+        .responseData  { dataResponse in
+            switch dataResponse.result {
+            case .success(_):
+                // 성공한 경우 응답의 상태 코드와 데이터를 가져옴
+                guard let statusCode = dataResponse.response?.statusCode else { return }
+                guard let data = dataResponse.value else { return }
                 
-                print("JSON Response: \(value)")
-                
-                if let jsonDictionary = value as? [String: Any] {
-                    print("Value of key 'example': \(jsonDictionary["example"] ?? "N/A")")
+                if let json = try? JSONSerialization.jsonObject(with: data, options: []),
+                   JSONSerialization.isValidJSONObject(json) {
+                    // 데이터가 유효한 JSON인 경우
+                    let networkResult = self.judgeRecommendStatus(status: statusCode, data: data)
+                    completion(networkResult)
+                    print("JSON맞음")
+                } else {
+                    // 데이터가 유효한 JSON이 아닌 경우
+                    print("JSON아님")
                 }
                 
-            case .failure(let error):
-                print("Error: \(error)")
+            case .failure(_):
+                // 실패한 경우 네트워크 에러로 간주하고 pathErr 반환
+                completion(.pathErr)
             }
         }
     }
     
     
     func getRecommendData_fit(completion: @escaping (NetworkResult<Any>) -> ()) {
-
+        
         let url = "http://3.38.212.123:8000/rest/upload"
         let sort_criterion = "hog"
         let image = UIImage(named: "/Users/yerin/Documents/pyerin/iOS_RF/item_sample.png")!
@@ -149,26 +193,42 @@ struct RecommendDataService {
     
     
     
+    //    // 서버 응답 상태 코드에 따라 결과를 판단하는 함수
+    //    private func judgeRecommendStatus(status: Int, data: Data) -> NetworkResult<Any> {
+    //        // JSON 데이터를 디코딩하기 위해 JSONDecoder 사용
+    //        let decoder = JSONDecoder()
+    //
+    //        // 서버 응답 데이터를 RecommendDataModel로 디코딩
+    //        guard let decodeData = try? decoder.decode(RecommendData.self, from: data)
+    //        else { return .decodingFail }
+    //
+    //        // 디코딩에 성공한 경우 해당 데이터를 성공 케이스로 반환
+    //        return .success(decodeData)
+    //    }
+    //}
     
-//    private func judgeStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
-//        switch statusCode {
-//
-//        case 200: return isValidData(data: data)
-//        case 400: return .pathErr
-//        case 500: return .serverErr
-//        default: return .networkFail
-//        }
-//    }
-//
-//    private func isValidData(data : Data) -> NetworkResult<Any> {
-//
-//        let decoder = JSONDecoder()
-//
-//        guard let decodedData = try? decoder.decode(RecommendDataModel.self, from: data)
-//        else { return .pathErr}
-//        // 우선 PersonDataModel 형태로 decode(해독)을 한번 거칩니다. 실패하면 pathErr
-//        // 해독에 성공하면 Person data를 success에 넣어줍니다.
-//        return .success(decodedData.data!)
-//    }
+    // 서버 응답 상태 코드에 따라 결과를 판단하는 함수
+    private func judgeRecommendStatus(status: Int, data: Data) -> NetworkResult<Any> {
+        switch status {
+        case 200: return isValidData(data: data)
+        case 400: return isUsedPathErrData(data: data)
+        case 500: return .serverErr
+        default: return .networkFail
+        }
+    }
+    private func isValidData(data: Data) -> NetworkResult<Any> {
+        
+        let decoder = JSONDecoder()
+        
+        guard let decodedData = try? decoder.decode(RecommendDataModel.self, from: data) else {return .pathErr}
+        return .success(decodedData)
+    }
+    
+    private func isUsedPathErrData(data: Data)  -> NetworkResult<Any> {
+        
+        let decoder = JSONDecoder()
+        
+        guard let decodedData = try? decoder.decode(RecommendDataModel.self, from: data) else {return .pathErr}
+        return .requestErr(decodedData)
+    }
 }
-
