@@ -51,8 +51,6 @@ class RecommendViewController: UIViewController {
         // view가 다시 나타날때 collectionView 데이터 리로드
         RecommendCollectionView.reloadData()
         
-        // 데이터 디버깅
-        print(recommendData)
     }
     
     // MARK: - 데이터 가져오기
@@ -218,7 +216,17 @@ extension RecommendViewController: UICollectionViewDataSource {
 }
 
 // MARK: - UICollectionViewDelegate
-extension RecommendViewController: UICollectionViewDelegate { }
+extension RecommendViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+           let selectedProduct = recommendData[indexPath.row]
+
+           // 상품의 구매 홈페이지 주소로 이동
+           if let url = URL(string: selectedProduct.itemUrl), UIApplication.shared.canOpenURL(url) {
+               UIApplication.shared.open(url, options: [:], completionHandler: nil)
+           }
+       }
+}
 
 
 // MARK: - UICollectionViewDelegateFlowLayout
