@@ -17,6 +17,7 @@ class MethodViewController: UIViewController, UIImagePickerControllerDelegate, U
     let imagePicker = UIImagePickerController()
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    var croppedImage: UIImage?
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -47,7 +48,7 @@ class MethodViewController: UIViewController, UIImagePickerControllerDelegate, U
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             imagePicker.sourceType = .photoLibrary
             
-            imagePicker.allowsEditing = true
+            //imagePicker.allowsEditing = true
             
             present(imagePicker, animated: true, completion: nil)
         } else {
@@ -62,7 +63,7 @@ class MethodViewController: UIViewController, UIImagePickerControllerDelegate, U
             cameraViewController.delegate = self
             cameraViewController.sourceType = .camera
             
-            cameraViewController.allowsEditing = true
+            //cameraViewController.allowsEditing = true
             
             present(cameraViewController, animated: true, completion: nil)
         } else {
@@ -75,7 +76,7 @@ class MethodViewController: UIViewController, UIImagePickerControllerDelegate, U
                         cameraViewController.delegate = self
                         cameraViewController.sourceType = .camera
                         
-                        cameraViewController.allowsEditing = true
+                        //cameraViewController.allowsEditing = true
                         
                         self.present(cameraViewController, animated: true, completion: nil)
                     }
@@ -89,8 +90,9 @@ class MethodViewController: UIViewController, UIImagePickerControllerDelegate, U
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
          if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             //imageView.image = originalImage
+            croppedImage = originalImage
             dismiss(animated: true) {
-                             self.openCropVC(image: originalImage)
+                self.openCropVC(image: originalImage)
             }
         }
         picker.dismiss(animated: true, completion: nil)
@@ -105,6 +107,50 @@ class MethodViewController: UIViewController, UIImagePickerControllerDelegate, U
         // 네비게이션 바 타이틀 설정
         navigationItem.title = "무신사 렌즈"
     }
+    
+    @IBAction func recommendButtonTapped(_ sender: UIButton) {
+        guard let croppedImage = croppedImage else {
+            print("recommendbutton error")
+            return
+        }
+        sendImageToServer { [weak self] in
+            guard let self = self else { return }
+            // RecommendViewController를 Storyboard에서 가져오기
+            if let recommendViewController = storyboard?.instantiateViewController(withIdentifier: "RecommendationViewControllerIdentifier") as? RecommendViewController {
+                recommendViewController.croppedImage = croppedImage
+                navigationController?.pushViewController(recommendViewController, animated: true)
+            }
+        }
+    }
+    
+    private func sendImageToServer(completion: @escaping() -> Void) {
+        guard let croppedImage = croppedImage else {
+            print("Error: MVCnil")
+            return
+        }
+        RecommendDataService.shared.getRecommendData_default(image: croppedImage) { response in
+            // 서버 응답에 따른 처리
+            switch response {
+            case .success(let data):
+                // 성공적으로 데이터를 받아온 경우
+                if let response = data as? RecommendDataModel, let data = response.data {
+                    print("업로드 성공")
+                }
+            case .requestErr(let message):
+                print(message)
+            case .networkFail:
+                print("networkFail")
+            case .serverErr:
+                print("serverErr")
+            case .pathErr:
+                print("pathErr")
+            case .decodingFail:
+                print("decodingErr")
+            }
+            
+            completion()
+        }
+    }
 }
 
 
@@ -112,8 +158,11 @@ extension MethodViewController: CropViewControllerDelegate {
     
     func cropViewControllerDidCrop(_ cropViewController: Mantis.CropViewController, cropped: UIImage, transformation: Mantis.Transformation, cropInfo: Mantis.CropInfo) {
         
+        croppedImage = cropped
         imageView.image = cropped
+        //sendImageToServer {
         cropViewController.dismiss(animated: true, completion: nil)
+        //}
     }
     
     func cropViewControllerDidCancel(_ cropViewController: Mantis.CropViewController, original: UIImage) {
@@ -122,9 +171,10 @@ extension MethodViewController: CropViewControllerDelegate {
     
     private func openCropVC(image: UIImage) {
             
-            let cropViewController = Mantis.cropViewController(image: image)
-            cropViewController.delegate = self
-            cropViewController.modalPresentationStyle = .fullScreen
-            self.present(cropViewController, animated: true)
-        }
+        let cropViewController = Mantis.cropViewController(image: image)
+        cropViewController.delegate = self
+        cropViewController.modalPresentationStyle = .fullScreen
+        self.present(cropViewController, animated: true)
+    }
+    
 }

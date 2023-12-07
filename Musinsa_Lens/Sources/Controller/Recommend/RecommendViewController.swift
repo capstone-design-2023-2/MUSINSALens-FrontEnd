@@ -20,6 +20,7 @@ class RecommendViewController: UIViewController {
     
     
     // MARK: - IBOutlets
+    
     @IBOutlet weak var RecommendCollectionView: UICollectionView!
     
     @IBOutlet var basicButton: UIButton!
@@ -27,6 +28,7 @@ class RecommendViewController: UIViewController {
     @IBOutlet var fitButton: UIButton!
     @IBOutlet var textureButton: UIButton!
     
+    var croppedImage: UIImage?
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -56,13 +58,17 @@ class RecommendViewController: UIViewController {
     // MARK: - 데이터 가져오기
     
     func fetchData() {
-        RecommendDataService.shared.getRecommendData_default { response in
+        guard let croppedImage = croppedImage else {
+            print("Error: RVCnil")
+            return
+        }
+        RecommendDataService.shared.getRecommendData_default(image: croppedImage) { [weak self] response in
             switch response {
             case .success(let data):
                 if let response = data as? RecommendDataModel, let data = response.data {
-                    self.recommendData = data
+                    self?.recommendData = data
                     // 반드시 컬렉션뷰 리로드
-                    self.RecommendCollectionView.reloadData()
+                    self?.RecommendCollectionView.reloadData()
                 }
             case .requestErr(let message):
                 print(message)
@@ -85,7 +91,11 @@ extension RecommendViewController {
     
     @IBAction func basicButtonTapped(_ sender: UIButton) {
         //case문 써가지고 4가지 상황으로 나누기
-        RecommendDataService.shared.getRecommendData_default { response in
+        guard let croppedImage = croppedImage else {
+            print("Error: RVC2nil")
+            return
+        }
+        RecommendDataService.shared.getRecommendData_default(image: croppedImage) { response in
             switch response {
             case .success(let data):
                 if let response = data as? RecommendDataModel, let data = response.data {
@@ -109,14 +119,17 @@ extension RecommendViewController {
     
     @IBAction func colorButtonTapped(_ sender: UIButton) {
         //case문 써가지고 4가지 상황으로 나누기
-        RecommendDataService.shared.getRecommendData_color { response in
+        guard let croppedImage = croppedImage else {
+            print("Error: RVC2nil")
+            return
+        }
+        RecommendDataService.shared.getRecommendData_default(image: croppedImage) { response in
             switch response {
             case .success(let data):
-                // 받은 데이터를 RecommendDataModel로 캐스트할 수 있는지 확인
                 if let response = data as? RecommendDataModel, let data = response.data {
-                    self.recommendData = data   // 그 중 'data' 속성을 추출합니다
-
-                    self.RecommendCollectionView.reloadData() //컬렉션뷰 리로드
+                    self.recommendData = data
+                    // 반드시 컬렉션뷰 리로드
+                    self.RecommendCollectionView.reloadData()
                 }
             case .requestErr(let message):
                 print(message)
@@ -134,7 +147,11 @@ extension RecommendViewController {
     
     @IBAction func fitButtonTapped(_ sender: UIButton) {
         //case문 써가지고 4가지 상황으로 나누기
-        RecommendDataService.shared.getRecommendData_fit { response in
+        guard let croppedImage = croppedImage else {
+            print("Error: RVC2nil")
+            return
+        }
+        RecommendDataService.shared.getRecommendData_default(image: croppedImage) { response in
             switch response {
             case .success(let data):
                 if let response = data as? RecommendDataModel, let data = response.data {
@@ -159,7 +176,11 @@ extension RecommendViewController {
     
     @IBAction func textureButtonTapped(_ sender: UIButton) {
         //case문 써가지고 4가지 상황으로 나누기
-        RecommendDataService.shared.getRecommendData_texture { response in
+        guard let croppedImage = croppedImage else {
+            print("Error: RVC2nil")
+            return
+        }
+        RecommendDataService.shared.getRecommendData_default(image: croppedImage) { response in
             switch response {
             case .success(let data):
                 if let response = data as? RecommendDataModel, let data = response.data {

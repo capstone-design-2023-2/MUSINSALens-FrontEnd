@@ -17,14 +17,20 @@ struct RecommendDataService {
     static let shared = RecommendDataService()
     
     
-    func getRecommendData_default(completion: @escaping (NetworkResult<Any>) -> ()) {
+    func getRecommendData_default(image: UIImage, completion: @escaping (NetworkResult<Any>) -> ()) {
+        
+        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+            print("Error: imageData is nil")
+            completion(.pathErr)
+            return
+        }
         // 서버 URL
         let url = "http://3.38.212.123:8000/rest/upload"
         
         // 사용자가 선택한 기준
         let sort_criterion = "vgg"
         // 사용자가 업로드한 이미지
-        let image = UIImage(named: "/Users/yerin/Documents/pyerin/iOS_RF/item_sample.png")!
+        //let image = UIImage(named: "/Users/yerin/Documents/pyerin/iOS_RF/item_sample.png")!
         let header: HTTPHeaders = ["Content-Type" : "multipart/form-data"]
 
         
@@ -64,14 +70,24 @@ struct RecommendDataService {
     }
     
     
-    func getRecommendData_color(completion: @escaping (NetworkResult<Any>) -> ()) {
+    func getRecommendData_color(image: UIImage, completion: @escaping (NetworkResult<Any>) -> ()) {
         
+        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+            print("Error: imageData is nil")
+            completion(.pathErr)
+            return
+        }
+        // 서버 URL
         let url = "http://3.38.212.123:8000/rest/upload"
+        
+        // 사용자가 선택한 기준
         let sort_criterion = "color"
-        let image = UIImage(named: "/Users/yerin/Documents/pyerin/iOS_RF/item_sample.png")!
+        // 사용자가 업로드한 이미지
+        //let image = UIImage(named: "/Users/yerin/Documents/pyerin/iOS_RF/item_sample.png")!
         let header: HTTPHeaders = ["Content-Type" : "multipart/form-data"]
+
         
-        
+        // Alamofire의 AF.upload를 사용하여 멀티파트 폼 데이터 요청을 처리
         AF.upload(multipartFormData: { multipartData in
             multipartData.append(sort_criterion.data(using: .utf8)!, withName: "sort_criterion")
             
@@ -107,14 +123,24 @@ struct RecommendDataService {
     }
     
     
-    func getRecommendData_fit(completion: @escaping (NetworkResult<Any>) -> ()) {
+    func getRecommendData_fit(image: UIImage, completion: @escaping (NetworkResult<Any>) -> ()) {
         
+        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+            print("Error: imageData is nil")
+            completion(.pathErr)
+            return
+        }
+        // 서버 URL
         let url = "http://3.38.212.123:8000/rest/upload"
+        
+        // 사용자가 선택한 기준
         let sort_criterion = "hog"
-        let image = UIImage(named: "/Users/yerin/Documents/pyerin/iOS_RF/item_sample.png")!
+        // 사용자가 업로드한 이미지
+        //let image = UIImage(named: "/Users/yerin/Documents/pyerin/iOS_RF/item_sample.png")!
         let header: HTTPHeaders = ["Content-Type" : "multipart/form-data"]
 
         
+        // Alamofire의 AF.upload를 사용하여 멀티파트 폼 데이터 요청을 처리
         AF.upload(multipartFormData: { multipartData in
             multipartData.append(sort_criterion.data(using: .utf8)!, withName: "sort_criterion")
             
@@ -150,14 +176,24 @@ struct RecommendDataService {
     }
     
     
-    func getRecommendData_texture(completion: @escaping (NetworkResult<Any>) -> ()) {
+    func getRecommendData_texture(image: UIImage, completion: @escaping (NetworkResult<Any>) -> ()) {
         
+        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+            print("Error: imageData is nil")
+            completion(.pathErr)
+            return
+        }
+        // 서버 URL
         let url = "http://3.38.212.123:8000/rest/upload"
+        
+        // 사용자가 선택한 기준
         let sort_criterion = "gabor"
-        let image = UIImage(named: "/Users/yerin/Documents/pyerin/iOS_RF/item_sample.png")!
+        // 사용자가 업로드한 이미지
+        //let image = UIImage(named: "/Users/yerin/Documents/pyerin/iOS_RF/item_sample.png")!
         let header: HTTPHeaders = ["Content-Type" : "multipart/form-data"]
 
         
+        // Alamofire의 AF.upload를 사용하여 멀티파트 폼 데이터 요청을 처리
         AF.upload(multipartFormData: { multipartData in
             multipartData.append(sort_criterion.data(using: .utf8)!, withName: "sort_criterion")
             
