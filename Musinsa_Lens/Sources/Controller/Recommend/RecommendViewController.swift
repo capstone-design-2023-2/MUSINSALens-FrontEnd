@@ -28,6 +28,7 @@ class RecommendViewController: UIViewController {
     @IBOutlet var fitButton: UIButton!
     @IBOutlet var textureButton: UIButton!
     
+    var receivedCroppedImage: UIImage?
     var croppedImage: UIImage?
     
     // MARK: - View Life Cycle
@@ -45,9 +46,23 @@ class RecommendViewController: UIViewController {
         
         // 가져온 닙파일로 콜렉션뷰에 셀로 등록한다
         self.RecommendCollectionView.register(myCustomCollectionViewCellNib, forCellWithReuseIdentifier: String(describing: RecommendCollectionViewCell.self))
+        
+        // Observer 등록
+        NotificationCenter.default.addObserver(self, selector: #selector(handleImageData(_:)), name: NSNotification.Name("ImageNotification"), object: nil)
 
-        fetchData()
+        //fetchData(sortCriterion: "vgg")
     }
+    
+    @objc func handleImageData(_ notification: Notification) {
+        if let receivedCroppedImage = notification.object as? Data {
+            //데이터 처리
+            let prdImage = UIImage(data: receivedCroppedImage)
+            croppedImage = prdImage
+            print("Received image data with size: \(receivedCroppedImage.count) bytes")
+            fetchData()
+        }
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         // view가 다시 나타날때 collectionView 데이터 리로드
@@ -62,13 +77,15 @@ class RecommendViewController: UIViewController {
             print("Error: RVCnil")
             return
         }
-        RecommendDataService.shared.getRecommendData_default(image: croppedImage) { [weak self] response in
+        
+        RecommendDataService.shared.getRecommendData_default(image: croppedImage) { response in
             switch response {
             case .success(let data):
                 if let response = data as? RecommendDataModel, let data = response.data {
-                    self?.recommendData = data
+                    print("fetchData 전송 성공")
+                    self.recommendData = data
                     // 반드시 컬렉션뷰 리로드
-                    self?.RecommendCollectionView.reloadData()
+                    self.RecommendCollectionView.reloadData()
                 }
             case .requestErr(let message):
                 print(message)
@@ -89,72 +106,18 @@ class RecommendViewController: UIViewController {
 // MARK: - Action
 extension RecommendViewController {
     
+    
     @IBAction func basicButtonTapped(_ sender: UIButton) {
-        //case문 써가지고 4가지 상황으로 나누기
         guard let croppedImage = croppedImage else {
-            print("Error: RVC2nil")
+            print("Error: RVCnil")
             return
         }
+        
         RecommendDataService.shared.getRecommendData_default(image: croppedImage) { response in
             switch response {
             case .success(let data):
                 if let response = data as? RecommendDataModel, let data = response.data {
-                    self.recommendData = data
-                    // 반드시 컬렉션뷰 리로드
-                    self.RecommendCollectionView.reloadData()
-                }
-            case .requestErr(let message):
-                print(message)
-            case .networkFail:
-                print("networkFail")
-            case .serverErr:
-                print("serverErr")
-            case .pathErr:
-                print("pathErr")
-            case .decodingFail:
-                print("decodingErr")
-            }
-        }
-    }
-    
-    @IBAction func colorButtonTapped(_ sender: UIButton) {
-        //case문 써가지고 4가지 상황으로 나누기
-        guard let croppedImage = croppedImage else {
-            print("Error: RVC2nil")
-            return
-        }
-        RecommendDataService.shared.getRecommendData_default(image: croppedImage) { response in
-            switch response {
-            case .success(let data):
-                if let response = data as? RecommendDataModel, let data = response.data {
-                    self.recommendData = data
-                    // 반드시 컬렉션뷰 리로드
-                    self.RecommendCollectionView.reloadData()
-                }
-            case .requestErr(let message):
-                print(message)
-            case .networkFail:
-                print("networkFail")
-            case .serverErr:
-                print("serverErr")
-            case .pathErr:
-                print("pathErr")
-            case .decodingFail:
-                print("decodingErr")
-            }
-        }
-    }
-    
-    @IBAction func fitButtonTapped(_ sender: UIButton) {
-        //case문 써가지고 4가지 상황으로 나누기
-        guard let croppedImage = croppedImage else {
-            print("Error: RVC2nil")
-            return
-        }
-        RecommendDataService.shared.getRecommendData_default(image: croppedImage) { response in
-            switch response {
-            case .success(let data):
-                if let response = data as? RecommendDataModel, let data = response.data {
+                    print("vgg 전송 성공")
                     self.recommendData = data
                     // 반드시 컬렉션뷰 리로드
                     self.RecommendCollectionView.reloadData()
@@ -173,17 +136,17 @@ extension RecommendViewController {
         }
     }
 
-    
-    @IBAction func textureButtonTapped(_ sender: UIButton) {
-        //case문 써가지고 4가지 상황으로 나누기
+    @IBAction func colorButtonTapped(_ sender: UIButton) {
         guard let croppedImage = croppedImage else {
-            print("Error: RVC2nil")
+            print("Error: RVCnil")
             return
         }
-        RecommendDataService.shared.getRecommendData_default(image: croppedImage) { response in
+        
+        RecommendDataService.shared.getRecommendData_color(image: croppedImage) { response in
             switch response {
             case .success(let data):
                 if let response = data as? RecommendDataModel, let data = response.data {
+                    print("color 전송 성공")
                     self.recommendData = data
                     // 반드시 컬렉션뷰 리로드
                     self.RecommendCollectionView.reloadData()
@@ -201,6 +164,65 @@ extension RecommendViewController {
             }
         }
     }
+
+    @IBAction func fitButtonTapped(_ sender: UIButton) {
+        guard let croppedImage = croppedImage else {
+            print("Error: RVCnil")
+            return
+        }
+        
+        RecommendDataService.shared.getRecommendData_fit(image: croppedImage) { response in
+            switch response {
+            case .success(let data):
+                if let response = data as? RecommendDataModel, let data = response.data {
+                    print("fit 전송 성공")
+                    self.recommendData = data
+                    // 반드시 컬렉션뷰 리로드
+                    self.RecommendCollectionView.reloadData()
+                }
+            case .requestErr(let message):
+                print(message)
+            case .networkFail:
+                print("networkFail")
+            case .serverErr:
+                print("serverErr")
+            case .pathErr:
+                print("pathErr")
+            case .decodingFail:
+                print("decodingErr")
+            }
+        }
+    }
+
+    @IBAction func textureButtonTapped(_ sender: UIButton) {
+        guard let croppedImage = croppedImage else {
+            print("Error: RVCnil")
+            return
+        }
+        
+        RecommendDataService.shared.getRecommendData_texture(image: croppedImage) { response in
+            switch response {
+            case .success(let data):
+                if let response = data as? RecommendDataModel, let data = response.data {
+                    print("texture 전송 성공")
+                    self.recommendData = data
+                    // 반드시 컬렉션뷰 리로드
+                    self.RecommendCollectionView.reloadData()
+                }
+            case .requestErr(let message):
+                print(message)
+            case .networkFail:
+                print("networkFail")
+            case .serverErr:
+                print("serverErr")
+            case .pathErr:
+                print("pathErr")
+            case .decodingFail:
+                print("decodingErr")
+            }
+        }
+    }
+
 }
 
 // MARK: - UICollectionViewDataSource

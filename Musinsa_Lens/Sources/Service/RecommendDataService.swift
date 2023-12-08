@@ -16,6 +16,13 @@ struct RecommendDataService {
     // Singleton 패턴: 하나의 인스턴스를 앱 전체에서 공유할 수 있도록 함
     static let shared = RecommendDataService()
     
+    func generateUniqueFileName() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd_HHmmssSSS"
+        let currentDateTime = Date()
+        let fileName = formatter.string(from: currentDateTime)
+        return "\(fileName).jpg"
+    }
     
     func getRecommendData_default(image: UIImage, completion: @escaping (NetworkResult<Any>) -> ()) {
         
@@ -39,7 +46,8 @@ struct RecommendDataService {
             multipartData.append(sort_criterion.data(using: .utf8)!, withName: "sort_criterion")
             
             if let imageData = image.jpegData(compressionQuality: 1.0) {
-                multipartData.append(imageData, withName: "file", fileName: "image.jpg", mimeType: "image/jpeg")
+                let fileName = generateUniqueFileName()
+                multipartData.append(imageData, withName: "file", fileName: fileName, mimeType: "image/jpeg")
             }
         }, to: url, method: .post, headers: header)
         
@@ -92,7 +100,8 @@ struct RecommendDataService {
             multipartData.append(sort_criterion.data(using: .utf8)!, withName: "sort_criterion")
             
             if let imageData = image.jpegData(compressionQuality: 1.0) {
-                multipartData.append(imageData, withName: "file", fileName: "image.jpg", mimeType: "image/jpeg")
+                let fileName = generateUniqueFileName()
+                multipartData.append(imageData, withName: "file", fileName: fileName, mimeType: "image/jpeg")
             }
         }, to: url, method: .post, headers: header)
         
@@ -145,7 +154,8 @@ struct RecommendDataService {
             multipartData.append(sort_criterion.data(using: .utf8)!, withName: "sort_criterion")
             
             if let imageData = image.jpegData(compressionQuality: 1.0) {
-                multipartData.append(imageData, withName: "file", fileName: "image.jpg", mimeType: "image/jpeg")
+                let fileName = generateUniqueFileName()
+                multipartData.append(imageData, withName: "file", fileName: fileName, mimeType: "image/jpeg")
             }
         }, to: url, method: .post, headers: header)
         
@@ -198,7 +208,8 @@ struct RecommendDataService {
             multipartData.append(sort_criterion.data(using: .utf8)!, withName: "sort_criterion")
             
             if let imageData = image.jpegData(compressionQuality: 1.0) {
-                multipartData.append(imageData, withName: "file", fileName: "image.jpg", mimeType: "image/jpeg")
+                let fileName = generateUniqueFileName()
+                multipartData.append(imageData, withName: "file", fileName: fileName, mimeType: "image/jpeg")
             }
         }, to: url, method: .post, headers: header)
         

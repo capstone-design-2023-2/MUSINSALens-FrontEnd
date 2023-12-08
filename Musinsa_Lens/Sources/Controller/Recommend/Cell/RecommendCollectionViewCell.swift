@@ -20,7 +20,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     @IBOutlet var itemImageView: UIImageView!
     
     // MARK: - Properties
-    static let identifier = "RecommendItemCVC"
+    static let identifier = "RecommendCollectionViewCell"
     
     // MARK: - Life Cycle
     func cellConfigure() {

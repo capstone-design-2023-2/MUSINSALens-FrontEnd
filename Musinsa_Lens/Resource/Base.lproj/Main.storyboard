@@ -247,6 +247,7 @@
         <!--Item-->
         <scene sceneID="9mo-s6-RH2">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UBY-cI-hSc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="RecommendationViewControllerIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fpY-dj-O7O" customClass="RecommendViewController" customModule="Musinsa_Lens" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="atw-HC-7VY">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
@@ -362,7 +363,6 @@
                         <outlet property="textureButton" destination="VkO-sp-aLU" id="pNs-hl-JzW"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UBY-cI-hSc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4632.8244274809158" y="-35.211267605633807"/>
         </scene>
