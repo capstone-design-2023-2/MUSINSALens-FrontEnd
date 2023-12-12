@@ -49,9 +49,14 @@ class RecommendViewController: UIViewController {
         
         // Observer 등록
         NotificationCenter.default.addObserver(self, selector: #selector(handleImageData(_:)), name: NSNotification.Name("ImageNotification"), object: nil)
+        
+        // Reload시 화면 상단으로 이동
+        scrollToTop()
 
         //fetchData(sortCriterion: "vgg")
     }
+    
+    // MARK: - 그 외 funtion
     
     @objc func handleImageData(_ notification: Notification) {
         if let receivedCroppedImage = notification.object as? Data {
@@ -67,8 +72,12 @@ class RecommendViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // view가 다시 나타날때 collectionView 데이터 리로드
         RecommendCollectionView.reloadData()
-        
     }
+    
+    func scrollToTop() {
+            let topOffset = CGPoint(x: 0, y: -RecommendCollectionView.contentInset.top)
+            RecommendCollectionView.setContentOffset(topOffset, animated: true)
+        }
     
     // MARK: - 데이터 가져오기
     
@@ -100,12 +109,10 @@ class RecommendViewController: UIViewController {
             }
         }
     }
-    
-
 }
+
 // MARK: - Action
 extension RecommendViewController {
-    
     
     @IBAction func basicButtonTapped(_ sender: UIButton) {
         guard let croppedImage = croppedImage else {
@@ -121,6 +128,7 @@ extension RecommendViewController {
                     self.recommendData = data
                     // 반드시 컬렉션뷰 리로드
                     self.RecommendCollectionView.reloadData()
+                    self.scrollToTop()
                 }
             case .requestErr(let message):
                 print(message)
@@ -150,6 +158,7 @@ extension RecommendViewController {
                     self.recommendData = data
                     // 반드시 컬렉션뷰 리로드
                     self.RecommendCollectionView.reloadData()
+                    self.scrollToTop()
                 }
             case .requestErr(let message):
                 print(message)
@@ -179,6 +188,7 @@ extension RecommendViewController {
                     self.recommendData = data
                     // 반드시 컬렉션뷰 리로드
                     self.RecommendCollectionView.reloadData()
+                    self.scrollToTop()
                 }
             case .requestErr(let message):
                 print(message)
@@ -208,6 +218,7 @@ extension RecommendViewController {
                     self.recommendData = data
                     // 반드시 컬렉션뷰 리로드
                     self.RecommendCollectionView.reloadData()
+                    self.scrollToTop()
                 }
             case .requestErr(let message):
                 print(message)
