@@ -144,36 +144,6 @@ extension RecommendViewController {
         }
     }
 
-    @IBAction func colorButtonTapped(_ sender: UIButton) {
-        guard let croppedImage = croppedImage else {
-            print("Error: RVCnil")
-            return
-        }
-        
-        RecommendDataService.shared.getRecommendData_color(image: croppedImage) { response in
-            switch response {
-            case .success(let data):
-                if let response = data as? RecommendDataModel, let data = response.data {
-                    print("color 전송 성공")
-                    self.recommendData = data
-                    // 반드시 컬렉션뷰 리로드
-                    self.RecommendCollectionView.reloadData()
-                    self.scrollToTop()
-                }
-            case .requestErr(let message):
-                print(message)
-            case .networkFail:
-                print("networkFail")
-            case .serverErr:
-                print("serverErr")
-            case .pathErr:
-                print("pathErr")
-            case .decodingFail:
-                print("decodingErr")
-            }
-        }
-    }
-
     @IBAction func fitButtonTapped(_ sender: UIButton) {
         guard let croppedImage = croppedImage else {
             print("Error: RVCnil")

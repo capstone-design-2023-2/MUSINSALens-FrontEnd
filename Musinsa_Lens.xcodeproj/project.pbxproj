@@ -434,9 +434,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X9JLS2FQT9;
+				DEVELOPMENT_TEAM = HQKU8KNVP8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Musinsa_Lens/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "camera access";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -447,7 +448,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.MM.Musinsa-Lens";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.MM.Musinsa-Lensp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -462,9 +463,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X9JLS2FQT9;
+				DEVELOPMENT_TEAM = HQKU8KNVP8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Musinsa_Lens/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "camera access";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -475,7 +477,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.MM.Musinsa-Lens";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.MM.Musinsa-Lensp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -91,8 +91,10 @@ class MethodViewController: UIViewController, UIImagePickerControllerDelegate, U
          if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             //imageView.image = originalImage
             croppedImage = originalImage
+             
             dismiss(animated: true) {
                 self.openCropVC(image: originalImage)
+                
             }
         }
         picker.dismiss(animated: true, completion: nil)

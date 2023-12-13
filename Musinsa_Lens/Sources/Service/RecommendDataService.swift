@@ -32,64 +32,10 @@ struct RecommendDataService {
             return
         }
         // 서버 URL
-        let url = "http://3.38.212.123:8000/rest/upload"
+        let url = "http://54.180.98.175:8000/rest/upload"
         
         // 사용자가 선택한 기준
         let sort_criterion = "vgg"
-        // 사용자가 업로드한 이미지
-        //let image = UIImage(named: "/Users/yerin/Documents/pyerin/iOS_RF/item_sample.png")!
-        let header: HTTPHeaders = ["Content-Type" : "multipart/form-data"]
-
-        
-        // Alamofire의 AF.upload를 사용하여 멀티파트 폼 데이터 요청을 처리
-        AF.upload(multipartFormData: { multipartData in
-            multipartData.append(sort_criterion.data(using: .utf8)!, withName: "sort_criterion")
-            
-            if let imageData = image.jpegData(compressionQuality: 1.0) {
-                let fileName = generateUniqueFileName()
-                multipartData.append(imageData, withName: "file", fileName: fileName, mimeType: "image/jpeg")
-            }
-        }, to: url, method: .post, headers: header)
-        
-        .responseData  { dataResponse in
-            switch dataResponse.result {
-            case .success(_):
-                // 성공한 경우 응답의 상태 코드와 데이터를 가져옴
-                guard let statusCode = dataResponse.response?.statusCode else { return }
-                guard let data = dataResponse.value else { return }
-                
-                if let json = try? JSONSerialization.jsonObject(with: data, options: []),
-                   JSONSerialization.isValidJSONObject(json) {
-                    // 데이터가 유효한 JSON인 경우
-                    let networkResult = self.judgeRecommendStatus(status: statusCode, data: data)
-                    completion(networkResult)
-                    
-                    print("JSON맞음")
-                } else {
-                    // 데이터가 유효한 JSON이 아닌 경우
-                    print("JSON아님")
-                }
-                
-            case .failure(_):
-                // 실패한 경우 네트워크 에러로 간주하고 pathErr 반환
-                completion(.pathErr)
-            }
-        }
-    }
-    
-    
-    func getRecommendData_color(image: UIImage, completion: @escaping (NetworkResult<Any>) -> ()) {
-        
-        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
-            print("Error: imageData is nil")
-            completion(.pathErr)
-            return
-        }
-        // 서버 URL
-        let url = "http://3.38.212.123:8000/rest/upload"
-        
-        // 사용자가 선택한 기준
-        let sort_criterion = "color"
         // 사용자가 업로드한 이미지
         //let image = UIImage(named: "/Users/yerin/Documents/pyerin/iOS_RF/item_sample.png")!
         let header: HTTPHeaders = ["Content-Type" : "multipart/form-data"]
@@ -140,7 +86,7 @@ struct RecommendDataService {
             return
         }
         // 서버 URL
-        let url = "http://3.38.212.123:8000/rest/upload"
+        let url = "http://54.180.98.175:8000/rest/upload"
         
         // 사용자가 선택한 기준
         let sort_criterion = "hog"
@@ -194,7 +140,7 @@ struct RecommendDataService {
             return
         }
         // 서버 URL
-        let url = "http://3.38.212.123:8000/rest/upload"
+        let url = "http://54.180.98.175:8000/rest/upload"
         
         // 사용자가 선택한 기준
         let sort_criterion = "gabor"
