@@ -12,3 +12,7 @@
 ![image](https://github.com/capstone-design-2023-2/MUSINSALens-FrontEnd/assets/81500522/9fe6d107-8dc6-4b18-9a98-bfece3710f38)
 ![image](https://github.com/capstone-design-2023-2/MUSINSALens-FrontEnd/assets/81500522/cf3b898a-e342-4470-ae58-71edfa57263a)
 ![image](https://github.com/capstone-design-2023-2/MUSINSALens-FrontEnd/assets/81500522/77f6a784-4f4d-402e-ac27-b410133829e6)
+
+
+시연영상
+[https://ncf-ec2-east-35-hv.xconvert.com/v1/edge/downloads/L4SCUM8ws5V-z-0-y-6670294e00a7b41f924c6e9d.gif?uuid=9547dd08-169c-986c-4017-647fddcbf02e](https://ncf-ec2-east-35-hv.xconvert.com/v1/edge/downloads/L4SCUM8ws5V-z-0-y-6670294e00a7b41f924c6e9d.gif?uuid=9547dd08-169c-986c-4017-647fddcbf02e)
