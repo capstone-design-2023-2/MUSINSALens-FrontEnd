@@ -15,4 +15,8 @@
 
 
 시연영상
-[https://ncf-ec2-east-35-hv.xconvert.com/v1/edge/downloads/L4SCUM8ws5V-z-0-y-6670294e00a7b41f924c6e9d.gif?uuid=9547dd08-169c-986c-4017-647fddcbf02e](https://ncf-ec2-east-35-hv.xconvert.com/v1/edge/downloads/L4SCUM8ws5V-z-0-y-6670294e00a7b41f924c6e9d.gif?uuid=9547dd08-169c-986c-4017-647fddcbf02e)
+
+
+
+https://github.com/capstone-design-2023-2/MUSINSALens-FrontEnd/assets/81500522/b71f4f71-d93a-471a-a50d-31bce1b16c31
+
